@@ -1,88 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Theme Toggle</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .dark-theme {
-            background-color: black;
-            color: white;
-        }
-
-        .light-theme {
-            background-color: white;
-            color: black;
-        }
-
-        .toggle-button {
-            font-size: 18px;
-            padding: 15px 30px;
-            border-radius: 25px;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        /* Dark theme button */
-        .dark-theme .toggle-button {
-            background-color: #333;
-            color: white;
-        }
-
-        /* Light theme button */
-        .light-theme .toggle-button {
-            background-color: #000300;
-            color: white;
-        }
-
-        .toggle-button:hover {
-            opacity: 0.8;
-        }
-
-        .toggle-button:active {
-            opacity: 0.6;
-        }
-    </style>
+  <title>Theme Toggle</title>
 </head>
-<body class="light-theme">
+<body style="margin:0; height:100vh; display:flex; align-items:center; justify-content:center; background-color:white;" id="body">
+  
+  <button 
+    onclick="toggleTheme()" 
+    id="toggleBtn" 
+    style="padding: 10px 20px; font-size: 16px;">
+    Turn Off
+  </button>
 
-    <div>
-        <button class="toggle-button" id="themeButton" onclick="toggleTheme()">Turn Off</button>
-    </div>
-    <p class="footer">
-        Created by <a href="http://www.sinzn.fun/">Shivam Singh</a> Source available on <a href="https://github.com/sinzn/Toggle-mode
-">Github</a>.
-      </p>
-    <script>
-        function toggleTheme() {
-            const button = document.getElementById('themeButton');
-            // Toggle between light and dark themes
-            document.body.classList.toggle('dark-theme');
-            document.body.classList.toggle('light-theme');
+  <script>
+    let isDark = false;
 
-            // Change button text based on the theme
-            if (document.body.classList.contains('dark-theme')) {
-                button.textContent = "Turn On";
-            } else {
-                button.textContent = "Turn Off";
-            }
-        }
-    </script>
+    function toggleTheme() {
+      const body = document.getElementById('body');
+      const button = document.getElementById('toggleBtn');
+
+      if (isDark) {
+        body.style.backgroundColor = 'white';
+        body.style.color = 'black';
+        button.innerText = 'Turn Off';
+      } else {
+        body.style.backgroundColor = 'black';
+        body.style.color = 'white';
+        button.innerText = 'Turn On';
+      }
+
+      isDark = !isDark;
+    }
+  </script>
 
 </body>
 </html>
